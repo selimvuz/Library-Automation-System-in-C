@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 // ANSI escape codes for color
 #define BLACK_TEXT "\033[0;30m"
@@ -20,6 +21,12 @@ void flushInputBuffer()
         ;
 }
 
+void printLoginMenu();
+void handleLoginMenuChoice();
+void handleMainMenuChoice();
+void handleLogin();
+void returnText();
+
 void printMainMenu()
 {
     printf(GREEN_TEXT "--Kutuphane Otomasyon Sistemi--" RESET_COLOR "\n");
@@ -29,6 +36,26 @@ void printMainMenu()
     printf(CYAN_TEXT "4) Cikis" RESET_COLOR "\n");
     printf("\nSeciminiz: ");
     handleMainMenuChoice();
+}
+
+void returnText()
+{
+    system("cls");
+    printf("Geri donuluyor.\n");
+    Sleep(200);
+    system("cls");
+    printf("Geri donuluyor..\n");
+    Sleep(200);
+    system("cls");
+    printf("Geri donuluyor...\n");
+    Sleep(200);
+    system("cls");
+    printf("Geri donuluyor....\n");
+    Sleep(200);
+    system("cls");
+    printf("Geri donuluyor.....\n");
+    Sleep(200);
+    system("cls");
 }
 
 void handleMainMenuChoice()
@@ -89,7 +116,8 @@ void handleLoginMenuChoice()
         printf("Yonetici girisi\n");
         break;
     case 4:
-        printf("Geri donuluyor\n");
+        returnText();
+        printMainMenu();
         break;
     default:
         printf("Gecersiz secim. Tekrar deneyin.\n");
