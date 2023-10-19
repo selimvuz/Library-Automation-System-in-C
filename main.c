@@ -20,45 +20,103 @@ void flushInputBuffer()
         ;
 }
 
-int main()
+void printMainMenu()
+{
+    printf(GREEN_TEXT "--Kutuphane Otomasyon Sistemi--" RESET_COLOR "\n");
+    printf(BLUE_TEXT "1) Giris" RESET_COLOR "\n");
+    printf(YELLOW_TEXT "2) Kayit" RESET_COLOR "\n");
+    printf(MAGENTA_TEXT "3) Hakkinda" RESET_COLOR "\n");
+    printf(CYAN_TEXT "4) Cikis" RESET_COLOR "\n");
+    printf("\nSeciminiz: ");
+    handleMainMenuChoice();
+}
+
+void handleMainMenuChoice()
 {
     int choice;
-    int control = 1;
-    system("cls"); // Clear the screen
+    choice = getchar();    // Read a character
+    choice = choice - '0'; // Convert character to integer
+    flushInputBuffer();    // Consume newline character
 
-    while (control)
+    switch (choice)
     {
-        printf(GREEN_TEXT "--Kutuphane Otomasyon Sistemi--" RESET_COLOR "\n");
-        printf(BLUE_TEXT "1. Giris" RESET_COLOR "\n");
-        printf(YELLOW_TEXT "2. Kayit" RESET_COLOR "\n");
-        printf(MAGENTA_TEXT "3. Hakkinda" RESET_COLOR "\n");
-        printf(CYAN_TEXT "4. Cikis" RESET_COLOR "\n");
-        printf("\nSeciminiz: ");
-
-        choice = getchar(); // Read a character
-        choice = choice - '0'; // Convert character to integer
-
-        flushInputBuffer(); // Consume newline character
-
-        switch (choice)
-        {
-        case 1:
-            control = 0;
-            system("cls"); // Clear the screen
-            printf("\nGiris yapiliyor");
-            break;
-        case 2:
-            printf("\nKayit arayuzu");
-            break;
-        case 3:
-            printf("\nBilgiler");
-            break;
-        case 4:
-            return 0;
-        default:
-            system("cls"); // Clear the screen
-            printf("Gecersiz secim. Tekrar deneyin.\n");
-        }
+    case 1:
+        printLoginMenu();
+        break;
+    case 2:
+        printf("\nKayit arayuzu");
+        break;
+    case 3:
+        printf("\nBilgiler");
+        break;
+    case 4:
+        exit(0);
+    default:
+        printf("Gecersiz secim. Tekrar deneyin.\n");
     }
+}
+
+void printLoginMenu()
+{
+    system("cls");
+    printf(GREEN_TEXT "--Giris--" RESET_COLOR "\n");
+    printf(BLUE_TEXT "----1.1) Ogrenci" RESET_COLOR "\n");
+    printf(YELLOW_TEXT "----1.2) Personel" RESET_COLOR "\n");
+    printf(MAGENTA_TEXT "----1.3) Yonetici" RESET_COLOR "\n");
+    printf(CYAN_TEXT "----1.4) Geri don" RESET_COLOR "\n");
+    printf("\nSeciminiz: ");
+    handleLoginMenuChoice();
+}
+
+void handleLoginMenuChoice()
+{
+    int choice;
+    choice = getchar();
+    choice = choice - '0';
+    flushInputBuffer();
+
+    switch (choice)
+    {
+    case 1:
+        system("cls");
+        printf("Ogrenci girisi\n");
+        handleLogin();
+        break;
+    case 2:
+        printf("Personel girisi\n");
+        break;
+    case 3:
+        printf("Yonetici girisi\n");
+        break;
+    case 4:
+        printf("Geri donuluyor\n");
+        break;
+    default:
+        printf("Gecersiz secim. Tekrar deneyin.\n");
+    }
+}
+
+void handleLogin()
+{
+    printf("\nKullanici adi: ");
+    char username[20];
+    scanf("%s", username);
+    flushInputBuffer();
+
+    printf("\nSifre: ");
+    char password[20];
+    scanf("%s", password);
+    flushInputBuffer();
+
+    printf("\nKullanici adi: %s\n", username);
+    printf("Sifre: %s\n", password);
+}
+
+int main()
+{
+    system("cls");
+
+    printMainMenu();
+
     return 0;
 }
