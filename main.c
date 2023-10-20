@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <windows.h>
 
 // ANSI escape codes for color
@@ -11,8 +12,42 @@
 #define MAGENTA_TEXT "\033[0;35m"
 #define CYAN_TEXT "\033[0;36m"
 #define WHITE_TEXT "\033[0;37m"
-
 #define RESET_COLOR "\033[0m"
+
+enum UserType
+{
+    STUDENT,
+    INSTRUCTOR,
+    MANAGER
+};
+
+struct User
+{
+    char username[50];
+    char password[50];
+    enum UserType type;
+};
+
+void initUser(struct User *user, const char *username, const char *password, enum UserType type)
+{
+    strcpy(user->username, username);
+    strcpy(user->password, password);
+    user->type = type;
+}
+
+struct User *createUser(const char *username, const char *password, enum UserType type)
+{
+    struct User *user = (struct User *)malloc(sizeof(struct User));
+    initUser(user, username, password, type);
+    return user;
+}
+
+void printUser(struct User *user)
+{
+    printf("Kullanici Adi: %s\n", user->username);
+    printf("Sifre: %s\n", user->password);
+    printf("Rol: %d\n", user->type);
+}
 
 void flushInputBuffer()
 {
@@ -142,8 +177,10 @@ void handleLogin()
 
 int main()
 {
-    system("cls");
+    struct User *user1 = createUser("user1", "pass1", STUDENT);
 
+    system("cls");
+    printUser(user1);
     printMainMenu();
 
     return 0;
