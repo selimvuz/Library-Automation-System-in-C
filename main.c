@@ -14,6 +14,13 @@
 #define WHITE_TEXT "\033[0;37m"
 #define RESET_COLOR "\033[0m"
 
+void printLoginMenu();
+void handleLoginMenuChoice();
+void handleMainMenuChoice();
+void handleLogin();
+void returnText();
+void initUser();
+
 enum UserType
 {
     STUDENT,
@@ -21,12 +28,20 @@ enum UserType
     MANAGER
 };
 
+const char *userTypeStrings[] = {
+    "Ogrenci",
+    "Ogretmen",
+    "Yonetici"};
+
 struct User
 {
     char username[50];
     char password[50];
     enum UserType type;
 };
+
+struct User users[10];
+int numUsers = 0;
 
 void initUser(struct User *user, const char *username, const char *password, enum UserType type)
 {
@@ -42,11 +57,23 @@ struct User *createUser(const char *username, const char *password, enum UserTyp
     return user;
 }
 
+struct User *findUser(const char *username, const char *password)
+{
+    for (int i = 0; i < numUsers; i++)
+    {
+        if (strcmp(users[i].username, username) == 0 && strcmp(users[i].password, password) == 0)
+        {
+            return &users[i];
+        }
+    }
+    return NULL; // User not found
+}
+
 void printUser(struct User *user)
 {
     printf("Kullanici Adi: %s\n", user->username);
     printf("Sifre: %s\n", user->password);
-    printf("Rol: %d\n", user->type);
+    printf("Rol: %s\n", userTypeStrings[user->type]);
 }
 
 void flushInputBuffer()
@@ -55,12 +82,6 @@ void flushInputBuffer()
     while ((c = getchar()) != '\n' && c != EOF)
         ;
 }
-
-void printLoginMenu();
-void handleLoginMenuChoice();
-void handleMainMenuChoice();
-void handleLogin();
-void returnText();
 
 void printMainMenu()
 {
@@ -115,6 +136,9 @@ void handleMainMenuChoice()
         exit(0);
     default:
         printf("Gecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        printMainMenu();
     }
 }
 
@@ -156,6 +180,9 @@ void handleLoginMenuChoice()
         break;
     default:
         printf("Gecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        printLoginMenu();
     }
 }
 
@@ -164,23 +191,32 @@ void handleLogin()
     printf("\nKullanici adi: ");
     char username[20];
     scanf("%s", username);
-    flushInputBuffer();
 
     printf("\nSifre: ");
     char password[20];
     scanf("%s", password);
-    flushInputBuffer();
 
-    printf("\nKullanici adi: %s\n", username);
-    printf("Sifre: %s\n", password);
+    struct User *user = findUser(username, password);
+    if (user != NULL)
+    {
+        printf("\nGiris basarili!\n");
+        printUser(user); // Print user details if needed
+    }
+    else
+    {
+        printf("\nKullanici adi veya sifre hatali!\n");
+        Sleep(2000);
+        returnText();
+        system("cls");
+        printLoginMenu();
+    }
 }
 
 int main()
 {
-    struct User *user1 = createUser("user1", "pass1", STUDENT);
+    users[numUsers++] = *createUser("john_doe", "password123", STUDENT);
 
     system("cls");
-    printUser(user1);
     printMainMenu();
 
     return 0;
