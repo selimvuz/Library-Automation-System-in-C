@@ -58,11 +58,11 @@ struct User *createUser(const char *username, const char *password, enum UserTyp
     return user;
 }
 
-struct User *findUser(const char *username, const char *password)
+struct User *findUser(const char *username, const char *password, enum UserType type)
 {
     for (int i = 0; i < numUsers; i++)
     {
-        if (strcmp(users[i].username, username) == 0 && strcmp(users[i].password, password) == 0)
+        if (strcmp(users[i].username, username) == 0 && strcmp(users[i].password, password) == 0 && users[i].type == type)
         {
             return &users[i];
         }
@@ -139,7 +139,7 @@ void handleMainMenuChoice()
         printf("\nIleri programlama teknikleri ders projesi olarak Yavuz Selim Dogdu tarafindan hazirlanmistir.");
         printf("\nProje icerisinde kullanilan tum kodlar ve kaynaklar github.com/selimvuz adresinde bulunmaktadir.");
         printf("\n\n2023");
-        Sleep(8000);
+        Sleep(5000);
         returnText();
         printMainMenu();
         break;
@@ -177,13 +177,17 @@ void handleLoginMenuChoice()
     case 1:
         system("cls");
         printf("Ogrenci girisi\n");
-        handleLogin();
+        handleLogin(STUDENT);
         break;
     case 2:
+        system("cls");
         printf("Personel girisi\n");
+        handleLogin(INSTRUCTOR);
         break;
     case 3:
+        system("cls");
         printf("Yonetici girisi\n");
+        handleLogin(MANAGER);
         break;
     case 4:
         returnText();
@@ -256,7 +260,7 @@ void handleRegister()
     printMainMenu();
 }
 
-void handleLogin()
+void handleLogin(int roleType)
 {
     printf("\nKullanici adi: ");
     char username[20];
@@ -268,7 +272,7 @@ void handleLogin()
     scanf("%s", password);
     flushInputBuffer();
 
-    struct User *user = findUser(username, password);
+    struct User *user = findUser(username, password, roleType);
     if (user != NULL)
     {
         printf("\nGiris basarili!\n");
