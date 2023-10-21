@@ -134,7 +134,14 @@ void handleMainMenuChoice()
         break;
     case 3:
         system("cls");
-        printf("\nBilgiler");
+        printf("Hakkinda");
+        printf("\n\nKutuphane Otomasyon Sistemi\n");
+        printf("\nIleri programlama teknikleri ders projesi olarak Yavuz Selim Dogdu tarafindan hazirlanmistir.");
+        printf("\nProje icerisinde kullanilan tum kodlar ve kaynaklar github.com/selimvuz adresinde bulunmaktadir.");
+        printf("\n\n2023");
+        Sleep(8000);
+        returnText();
+        printMainMenu();
         break;
     case 4:
         exit(0);
