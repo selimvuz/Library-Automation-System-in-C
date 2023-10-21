@@ -119,8 +119,8 @@ void handleMainMenuChoice()
 {
     int choice;
     choice = getchar();    // Read a character
+    flushInputBuffer();    // Flush the input buffer
     choice = choice - '0'; // Convert character to integer
-    flushInputBuffer();    // Consume newline character
 
     switch (choice)
     {
@@ -133,6 +133,7 @@ void handleMainMenuChoice()
         handleRegister();
         break;
     case 3:
+        system("cls");
         printf("\nBilgiler");
         break;
     case 4:
@@ -161,8 +162,8 @@ void handleLoginMenuChoice()
 {
     int choice;
     choice = getchar();
-    choice = choice - '0';
     flushInputBuffer();
+    choice = choice - '0';
 
     switch (choice)
     {
@@ -194,6 +195,7 @@ void handleRegister()
     printf("\nKullanici adi: ");
     char username[20];
     scanf("%s", username);
+    flushInputBuffer();
 
     for (int i = 0; i < numUsers; i++)
     {
@@ -210,10 +212,12 @@ void handleRegister()
     printf("\nSifre: ");
     char password[20];
     scanf("%s", password);
+    flushInputBuffer();
 
     printf("\nSifre tekrar: ");
     char password2[20];
     scanf("%s", password2);
+    flushInputBuffer();
 
     if (strcmp(password, password2) != 0)
     {
@@ -227,6 +231,7 @@ void handleRegister()
     printf("\nRol: (1: Ogrenci, 2: Personel, 3: Yonetici)\n");
     int role;
     scanf("%d", &role);
+    flushInputBuffer();
 
     if (role < 1 || role > 3)
     {
@@ -249,10 +254,12 @@ void handleLogin()
     printf("\nKullanici adi: ");
     char username[20];
     scanf("%s", username);
+    flushInputBuffer();
 
     printf("\nSifre: ");
     char password[20];
     scanf("%s", password);
+    flushInputBuffer();
 
     struct User *user = findUser(username, password);
     if (user != NULL)
