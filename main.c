@@ -20,6 +20,7 @@ void handleMainMenuChoice();
 void handleLogin();
 void returnText();
 void initUser();
+void handleRegister();
 
 enum UserType
 {
@@ -127,7 +128,9 @@ void handleMainMenuChoice()
         printLoginMenu();
         break;
     case 2:
-        printf("\nKayit arayuzu");
+        system("cls");
+        printf("\nKayit arayuzu\n");
+        handleRegister();
         break;
     case 3:
         printf("\nBilgiler");
@@ -184,6 +187,61 @@ void handleLoginMenuChoice()
         system("cls");
         printLoginMenu();
     }
+}
+
+void handleRegister()
+{
+    printf("\nKullanici adi: ");
+    char username[20];
+    scanf("%s", username);
+
+    for (int i = 0; i < numUsers; i++)
+    {
+        if (strcmp(users[i].username, username) == 0)
+        {
+            printf("\nBu kullanici adi zaten alinmis!\n");
+            Sleep(2000);
+            returnText();
+            system("cls");
+            printMainMenu();
+        }
+    }
+
+    printf("\nSifre: ");
+    char password[20];
+    scanf("%s", password);
+
+    printf("\nSifre tekrar: ");
+    char password2[20];
+    scanf("%s", password2);
+
+    if (strcmp(password, password2) != 0)
+    {
+        printf("\nSifreler uyusmuyor!\n");
+        Sleep(2000);
+        returnText();
+        system("cls");
+        printMainMenu();
+    }
+
+    printf("\nRol: (1: Ogrenci, 2: Personel, 3: Yonetici)\n");
+    int role;
+    scanf("%d", &role);
+
+    if (role < 1 || role > 3)
+    {
+        printf("\nGecersiz rol!\n");
+        Sleep(2000);
+        returnText();
+        system("cls");
+        printMainMenu();
+    }
+
+    users[numUsers++] = *createUser(username, password, role - 1);
+    printf("\nKayit basarili!\n");
+    Sleep(2000);
+    returnText();
+    printMainMenu();
 }
 
 void handleLogin()
