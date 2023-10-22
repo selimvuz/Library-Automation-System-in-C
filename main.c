@@ -36,12 +36,12 @@ const char *userTypeStrings[] = {
 
 struct User
 {
-    char username[50];
-    char password[50];
+    char username[100];
+    char password[100];
     enum UserType type;
 };
 
-struct User users[10];
+struct User users[100];
 int numUsers = 0;
 
 void initUser(struct User *user, const char *username, const char *password, enum UserType type)
@@ -204,8 +204,8 @@ void handleLoginMenuChoice()
 void handleRegister()
 {
     printf("\nKullanici adi: ");
-    char username[20];
-    scanf("%s", username);
+    char username[100];
+    scanf("%10s", username);
     flushInputBuffer();
 
     for (int i = 0; i < numUsers; i++)
@@ -221,13 +221,13 @@ void handleRegister()
     }
 
     printf("\nSifre: ");
-    char password[20];
-    scanf("%s", password);
+    char password[100];
+    scanf("%10s", password);
     flushInputBuffer();
 
     printf("\nSifre tekrar: ");
-    char password2[20];
-    scanf("%s", password2);
+    char password2[100];
+    scanf("%10s", password2);
     flushInputBuffer();
 
     if (strcmp(password, password2) != 0)
@@ -263,13 +263,13 @@ void handleRegister()
 void handleLogin(int roleType)
 {
     printf("\nKullanici adi: ");
-    char username[20];
-    scanf("%s", username);
+    char username[100];
+    scanf("%10s", username);
     flushInputBuffer();
 
     printf("\nSifre: ");
-    char password[20];
-    scanf("%s", password);
+    char password[100];
+    scanf("%10s", password);
     flushInputBuffer();
 
     struct User *user = findUser(username, password, roleType);
