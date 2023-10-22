@@ -24,6 +24,9 @@ void initUser();
 void handleRegister();
 void handleMainPage();
 void mainPage();
+void handleBooks();
+void flushInputBuffer();
+void initializeBooks();
 
 enum UserType
 {
@@ -51,11 +54,13 @@ struct Book
     char publisherName[100];
     int bookID;
     bool borrowed;
-    int borrowedBy;
+    char borrowedBy[100];
 };
 
 struct User users[100];
+struct Book books[10];
 int numUsers = 0;
+char currentUser[100];
 
 void initializeBooks(struct Book *books)
 {
@@ -63,48 +68,45 @@ void initializeBooks(struct Book *books)
     strcpy(books[0].authorName, "Gabriel Garcia");
     strcpy(books[0].publisherName, "Can Yayinlari");
     books[0].bookID = 1;
-    books[0].borrowed = false;
-    books[0].borrowedBy = -1;
+    books[0].borrowed = true;
+    strcpy(books[0].borrowedBy, "yavuz");
 
     strcpy(books[1].bookName, "Simyaci");
     strcpy(books[1].authorName, "Paulo Coelho");
     strcpy(books[1].publisherName, "Can Yayinlari");
     books[1].bookID = 2;
-    books[1].borrowed = false;
-    books[1].borrowedBy = -1;
+    books[1].borrowed = true;
+    strcpy(books[1].borrowedBy, "yavuz");
 
     strcpy(books[2].bookName, "1984");
     strcpy(books[2].authorName, "George Orwell");
     strcpy(books[2].publisherName, "Can Yayinlari");
     books[2].bookID = 3;
     books[2].borrowed = false;
-    books[2].borrowedBy = -1;
 
     strcpy(books[3].bookName, "HynCft.");
     strcpy(books[3].authorName, "George Orwell");
     strcpy(books[3].publisherName, "Can Yayinlari");
     books[3].bookID = 4;
     books[3].borrowed = false;
-    books[3].borrowedBy = -1;
 
     strcpy(books[4].bookName, "SkrPrt.");
     strcpy(books[4].authorName, "Jose Mauro De");
     strcpy(books[4].publisherName, "Can Yayinlari");
     books[4].bookID = 5;
-    books[4].borrowed = false;
-    books[4].borrowedBy = -1;
+    books[4].borrowed = true;
+    strcpy(books[4].borrowedBy, "yavuz");
 
     strcpy(books[5].bookName, "KckPrn.");
     strcpy(books[5].authorName, "Antoine De");
     strcpy(books[5].publisherName, "Can Yayinlari");
     books[5].bookID = 6;
     books[5].borrowed = false;
-    books[5].borrowedBy = -1;
 }
 
 void displayBooks(struct Book *books)
 {
-    printf("Kitap ID\tKitap Adi\tYazar Adi\t\tYayin Evi\t\tOdunc Alinma\n");
+    printf("Kitap ID\tKitap Adi\tYazar Adi\t\tYayin Evi\t\tOdunc Alinmis\n");
     for (int i = 0; i < 6; i++)
     {
         printf("%d\t\t%s\t\t%s\t\t%s\t\t%s\n",
@@ -114,7 +116,69 @@ void displayBooks(struct Book *books)
                books[i].publisherName,
                books[i].borrowed ? "Evet" : "Hayir");
     }
-    exit(0);
+    printf("\n\n1) Kitap odunc al\n");
+    printf("2) Bilgisayara yukle\n");
+    printf("3) Geri don\n");
+    handleBooks();
+}
+
+void handleBooks()
+{
+    int choice;
+    choice = getchar();
+    flushInputBuffer();
+    choice = choice - '0';
+
+    switch (choice)
+    {
+    case 1:
+        printf("\nHangi kitabi odunc alacaksiniz?\n");
+        int bookToBorrow;
+        bookToBorrow = getchar();
+        flushInputBuffer();
+        bookToBorrow = bookToBorrow - '0';
+
+        if (bookToBorrow < 1 || bookToBorrow > 6)
+        {
+            printf("\nGecersiz kitap ID'si!\n");
+            Sleep(2000);
+            returnText();
+            system("cls");
+            displayBooks(books);
+        }
+
+        if (books[bookToBorrow - 1].borrowed)
+        {
+            printf("\nBu kitap zaten odunc alinmis!\n");
+            Sleep(2000);
+            returnText();
+            system("cls");
+            displayBooks(books);
+        }
+
+        books[bookToBorrow - 1].borrowed = true;
+        strcpy(books[bookToBorrow - 1].borrowedBy, currentUser);
+
+        printf("\nKitap (%s), %s tarafindan odunc alindi!\n", books[bookToBorrow - 1].bookName, currentUser);
+        Sleep(2000);
+        returnText();
+        system("cls");
+        mainPage();
+        break;
+    case 2:
+        printf("\nHangi kitabi bilgisayara yuklemek istiyorsunuz?\n");
+        exit(0); // Eklenecek
+    case 3:
+        system("cls");
+        returnText();
+        mainPage();
+        break;
+    default:
+        printf("Gecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        displayBooks(books);
+    }
 }
 
 void initUser(struct User *user, const char *username, const char *password, enum UserType type)
@@ -301,9 +365,17 @@ void handleRegister()
     scanf("%10s", username);
     flushInputBuffer();
 
-    if (strlen(username) < 6)
+    if (strlen(username) < 4)
     {
-        printf("\nKullanici adi en az 6 karakterden olusmalidir!\n");
+        printf("\nKullanici adi en az 4 karakterden olusmalidir!\n");
+        Sleep(2000);
+        returnText();
+        system("cls");
+        printMainMenu();
+    }
+    else if (strlen(username) > 10)
+    {
+        printf("\nKullanici adi en fazla 10 karakterden olusmalidir!\n");
         Sleep(2000);
         returnText();
         system("cls");
@@ -330,6 +402,14 @@ void handleRegister()
     if (strlen(password) < 6)
     {
         printf("\nSifre en az 6 karakterden olusmalidir!\n");
+        Sleep(2000);
+        returnText();
+        system("cls");
+        printMainMenu();
+    }
+    else if (strlen(password) > 10)
+    {
+        printf("\nSifre en fazla 10 karakterden olusmalidir!\n");
         Sleep(2000);
         returnText();
         system("cls");
@@ -388,6 +468,7 @@ void handleLogin(int roleType)
     {
         loginText();
         printf("Giris basarili!\n");
+        strcpy(currentUser, user->username);
         Sleep(2000);
         system("cls");
         mainPage();
@@ -406,10 +487,11 @@ void handleLogin(int roleType)
 void mainPage()
 {
     system("cls");
-    printf(GREEN_TEXT "--Kutuphane Otomasyon Sistemi--" RESET_COLOR "\n");
+    printf(GREEN_TEXT "\t\t--Ana Sayfa--\t\t" RESET_COLOR "\n");
+    printf("\nHosgeldiniz, %s!\n\n", currentUser);
     printf(BLUE_TEXT "1) Kitaplar" RESET_COLOR "\n");
-    printf(YELLOW_TEXT "2) Odunc Al" RESET_COLOR "\n");
-    printf(MAGENTA_TEXT "3) Odunc Ver" RESET_COLOR "\n");
+    printf(YELLOW_TEXT "2) Kitap iade et" RESET_COLOR "\n");
+    printf(MAGENTA_TEXT "3) Kitap bagisla" RESET_COLOR "\n");
     printf(CYAN_TEXT "4) Geri don" RESET_COLOR "\n");
     printf("\nSeciminiz: ");
     handleMainPage();
@@ -417,9 +499,6 @@ void mainPage()
 
 void handleMainPage()
 {
-    struct Book books[6];
-    initializeBooks(books);
-
     int choice;
     choice = getchar();    // Read a character
     flushInputBuffer();    // Flush the input buffer
@@ -434,11 +513,11 @@ void handleMainPage()
         break;
     case 2:
         system("cls");
-        printf("Odunc Al\n");
+        printf("Kitap iade et\n");
         break;
     case 3:
         system("cls");
-        printf("Odunc Ver\n");
+        printf("Kitap bagisla\n");
         break;
     case 4:
         returnText();
@@ -455,6 +534,7 @@ void handleMainPage()
 int main()
 {
     users[numUsers++] = *createUser("yavuz", "123", STUDENT);
+    initializeBooks(books);
 
     system("cls");
     printMainMenu();
