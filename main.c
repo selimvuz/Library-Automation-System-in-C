@@ -104,7 +104,6 @@ void initializeBooks(struct Book *books)
 
 void displayBooks(struct Book *books)
 {
-    printf("\nKitaplar:\n");
     printf("Kitap ID\tKitap Adi\tYazar Adi\t\tYayin Evi\t\tOdunc Alinma\n");
     for (int i = 0; i < 6; i++)
     {
@@ -115,6 +114,7 @@ void displayBooks(struct Book *books)
                books[i].publisherName,
                books[i].borrowed ? "Evet" : "Hayir");
     }
+    exit(0);
 }
 
 void initUser(struct User *user, const char *username, const char *password, enum UserType type)
@@ -386,15 +386,16 @@ void handleLogin(int roleType)
     struct User *user = findUser(username, password, roleType);
     if (user != NULL)
     {
-        printf("\nGiris basarili!\n");
-        Sleep(2000);
         loginText();
+        printf("Giris basarili!\n");
+        Sleep(2000);
         system("cls");
         mainPage();
     }
     else
     {
-        printf("\nKullanici adi veya sifre hatali!\n");
+        loginText();
+        printf("Kullanici adi veya sifre hatali!\n");
         Sleep(2000);
         returnText();
         system("cls");
@@ -428,7 +429,7 @@ void handleMainPage()
     {
     case 1:
         system("cls");
-        printf("Kitaplar\n");
+        printf("Kitaplar\n\n");
         displayBooks(books);
         break;
     case 2:
