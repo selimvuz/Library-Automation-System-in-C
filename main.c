@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+#include <stdbool.h>
 
 // ANSI escape codes for color
 #define BLACK_TEXT "\033[0;30m"
@@ -21,6 +22,8 @@ void handleLogin();
 void returnText();
 void initUser();
 void handleRegister();
+void handleMainPage();
+void mainPage();
 
 enum UserType
 {
@@ -41,8 +44,78 @@ struct User
     enum UserType type;
 };
 
+struct Book
+{
+    char bookName[100];
+    char authorName[100];
+    char publisherName[100];
+    int bookID;
+    bool borrowed;
+    int borrowedBy;
+};
+
 struct User users[100];
 int numUsers = 0;
+
+void initializeBooks(struct Book *books)
+{
+    strcpy(books[0].bookName, "KrmPzt.");
+    strcpy(books[0].authorName, "Gabriel Garcia");
+    strcpy(books[0].publisherName, "Can Yayinlari");
+    books[0].bookID = 1;
+    books[0].borrowed = false;
+    books[0].borrowedBy = -1;
+
+    strcpy(books[1].bookName, "Simyaci");
+    strcpy(books[1].authorName, "Paulo Coelho");
+    strcpy(books[1].publisherName, "Can Yayinlari");
+    books[1].bookID = 2;
+    books[1].borrowed = false;
+    books[1].borrowedBy = -1;
+
+    strcpy(books[2].bookName, "1984");
+    strcpy(books[2].authorName, "George Orwell");
+    strcpy(books[2].publisherName, "Can Yayinlari");
+    books[2].bookID = 3;
+    books[2].borrowed = false;
+    books[2].borrowedBy = -1;
+
+    strcpy(books[3].bookName, "HynCft.");
+    strcpy(books[3].authorName, "George Orwell");
+    strcpy(books[3].publisherName, "Can Yayinlari");
+    books[3].bookID = 4;
+    books[3].borrowed = false;
+    books[3].borrowedBy = -1;
+
+    strcpy(books[4].bookName, "SkrPrt.");
+    strcpy(books[4].authorName, "Jose Mauro De");
+    strcpy(books[4].publisherName, "Can Yayinlari");
+    books[4].bookID = 5;
+    books[4].borrowed = false;
+    books[4].borrowedBy = -1;
+
+    strcpy(books[5].bookName, "KckPrn.");
+    strcpy(books[5].authorName, "Antoine De");
+    strcpy(books[5].publisherName, "Can Yayinlari");
+    books[5].bookID = 6;
+    books[5].borrowed = false;
+    books[5].borrowedBy = -1;
+}
+
+void displayBooks(struct Book *books)
+{
+    printf("\nKitaplar:\n");
+    printf("Kitap ID\tKitap Adi\tYazar Adi\t\tYayin Evi\t\tOdunc Alinma\n");
+    for (int i = 0; i < 6; i++)
+    {
+        printf("%d\t\t%s\t\t%s\t\t%s\t\t%s\n",
+               books[i].bookID,
+               books[i].bookName,
+               books[i].authorName,
+               books[i].publisherName,
+               books[i].borrowed ? "Evet" : "Hayir");
+    }
+}
 
 void initUser(struct User *user, const char *username, const char *password, enum UserType type)
 {
@@ -111,6 +184,26 @@ void returnText()
     Sleep(200);
     system("cls");
     printf("Geri donuluyor.....\n");
+    Sleep(200);
+    system("cls");
+}
+
+void loginText()
+{
+    system("cls");
+    printf("Giris yapiliyor.\n");
+    Sleep(200);
+    system("cls");
+    printf("Giris yapiliyor..\n");
+    Sleep(200);
+    system("cls");
+    printf("Giris yapiliyor...\n");
+    Sleep(200);
+    system("cls");
+    printf("Giris yapiliyor....\n");
+    Sleep(200);
+    system("cls");
+    printf("Giris yapiliyor.....\n");
     Sleep(200);
     system("cls");
 }
@@ -294,7 +387,10 @@ void handleLogin(int roleType)
     if (user != NULL)
     {
         printf("\nGiris basarili!\n");
-        printUser(user); // Print user details if needed
+        Sleep(2000);
+        loginText();
+        system("cls");
+        mainPage();
     }
     else
     {
@@ -306,9 +402,58 @@ void handleLogin(int roleType)
     }
 }
 
+void mainPage()
+{
+    system("cls");
+    printf(GREEN_TEXT "--Kutuphane Otomasyon Sistemi--" RESET_COLOR "\n");
+    printf(BLUE_TEXT "1) Kitaplar" RESET_COLOR "\n");
+    printf(YELLOW_TEXT "2) Odunc Al" RESET_COLOR "\n");
+    printf(MAGENTA_TEXT "3) Odunc Ver" RESET_COLOR "\n");
+    printf(CYAN_TEXT "4) Geri don" RESET_COLOR "\n");
+    printf("\nSeciminiz: ");
+    handleMainPage();
+}
+
+void handleMainPage()
+{
+    struct Book books[6];
+    initializeBooks(books);
+
+    int choice;
+    choice = getchar();    // Read a character
+    flushInputBuffer();    // Flush the input buffer
+    choice = choice - '0'; // Convert character to integer
+
+    switch (choice)
+    {
+    case 1:
+        system("cls");
+        printf("Kitaplar\n");
+        displayBooks(books);
+        break;
+    case 2:
+        system("cls");
+        printf("Odunc Al\n");
+        break;
+    case 3:
+        system("cls");
+        printf("Odunc Ver\n");
+        break;
+    case 4:
+        returnText();
+        printMainMenu();
+        break;
+    default:
+        printf("Gecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        printMainMenu();
+    }
+}
+
 int main()
 {
-    users[numUsers++] = *createUser("john_doe", "password123", STUDENT);
+    users[numUsers++] = *createUser("yavuz", "123", STUDENT);
 
     system("cls");
     printMainMenu();
