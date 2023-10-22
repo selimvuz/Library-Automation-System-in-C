@@ -208,6 +208,15 @@ void handleRegister()
     scanf("%10s", username);
     flushInputBuffer();
 
+    if (strlen(username) < 6)
+    {
+        printf("\nKullanici adi en az 6 karakterden olusmalidir!\n");
+        Sleep(2000);
+        returnText();
+        system("cls");
+        printMainMenu();
+    }
+
     for (int i = 0; i < numUsers; i++)
     {
         if (strcmp(users[i].username, username) == 0)
@@ -224,6 +233,15 @@ void handleRegister()
     char password[100];
     scanf("%10s", password);
     flushInputBuffer();
+
+    if (strlen(password) < 6)
+    {
+        printf("\nSifre en az 6 karakterden olusmalidir!\n");
+        Sleep(2000);
+        returnText();
+        system("cls");
+        printMainMenu();
+    }
 
     printf("\nSifre tekrar: ");
     char password2[100];
