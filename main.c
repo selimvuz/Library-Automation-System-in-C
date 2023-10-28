@@ -20,6 +20,7 @@ void handleLoginMenuChoice();
 void handleMainMenuChoice();
 void handleLogin();
 void returnText();
+void openBookText();
 void initUser();
 void handleRegister();
 void handleMainPage();
@@ -27,6 +28,7 @@ void mainPage();
 void handleBooks();
 void flushInputBuffer();
 void initializeBooks();
+void bookOneRead();
 
 enum UserType
 {
@@ -117,7 +119,7 @@ void displayBooks(struct Book *books)
                books[i].borrowed ? "Evet" : "Hayir" RESET_COLOR);
     }
     printf(GREEN_TEXT "\n\n1) Kitap odunc al\n");
-    printf("2) Bilgisayara yukle\n");
+    printf("2) Kitap oku\n");
     printf("3) Geri don\n" RESET_COLOR);
     handleBooks();
 }
@@ -166,8 +168,27 @@ void handleBooks()
         mainPage();
         break;
     case 2:
-        printf("\nHangi kitabi bilgisayara yuklemek istiyorsunuz?\n");
-        exit(0); // Eklenecek
+        printf("\nHangi kitabi okumak istiyorsunuz?\n");
+        int bookToRead;
+        bookToRead = getchar();
+        flushInputBuffer();
+        bookToRead = bookToRead - '0';
+
+        if (bookToRead < 1 || bookToRead > 6)
+        {
+            printf("\nGecersiz kitap ID'si!\n");
+            Sleep(2000);
+            returnText();
+            system("cls");
+            displayBooks(books);
+        }
+        if (bookToRead == 1)
+        {
+            system("cls");
+            openBookText();
+            bookOneRead();
+        }
+        break;
     case 3:
         system("cls");
         returnText();
@@ -179,6 +200,35 @@ void handleBooks()
         system("cls");
         displayBooks(books);
     }
+}
+
+void bookOneRead()
+{
+    // Declare a file pointer
+    FILE *file;
+
+    // Open the file in read mode
+    file = fopen("Books/KirmiziPazartesi/KP-Sayfa-1.txt", "r");
+
+    // Check if the file was opened successfully
+    if (file == NULL)
+    {
+        perror("Bir seyler ters gitti.");
+        exit(EXIT_FAILURE);
+    }
+
+    // Read and print the contents of the file
+    char buffer[500]; // Create a buffer to store each line
+
+    printf("Sayfa 1\n\n");
+
+    while (fgets(buffer, sizeof(buffer), file) != NULL)
+    {
+        printf("%s", buffer);
+    }
+
+    // Close the file
+    fclose(file);
 }
 
 void initUser(struct User *user, const char *username, const char *password, enum UserType type)
@@ -248,6 +298,26 @@ void returnText()
     Sleep(200);
     system("cls");
     printf("Geri donuluyor.....\n");
+    Sleep(200);
+    system("cls");
+}
+
+void openBookText()
+{
+    system("cls");
+    printf("Kitap aciliyor.\n");
+    Sleep(200);
+    system("cls");
+    printf("Kitap aciliyor..\n");
+    Sleep(200);
+    system("cls");
+    printf("Kitap aciliyor...\n");
+    Sleep(200);
+    system("cls");
+    printf("Kitap aciliyor....\n");
+    Sleep(200);
+    system("cls");
+    printf("Kitap aciliyor.....\n");
     Sleep(200);
     system("cls");
 }
