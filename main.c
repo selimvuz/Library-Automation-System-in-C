@@ -29,6 +29,9 @@ void handleBooks();
 void flushInputBuffer();
 void initializeBooks();
 void bookOneRead();
+void bookOneReadTwo();
+void bookOneReadThree();
+void bookOneReadFour();
 
 enum UserType
 {
@@ -168,7 +171,7 @@ void handleBooks()
         mainPage();
         break;
     case 2:
-        printf("\nHangi kitabi okumak istiyorsunuz?\n");
+        printf("\nHangi kitabi okumak istiyorsunuz? (Kitap ID)\n");
         int bookToRead;
         bookToRead = getchar();
         flushInputBuffer();
@@ -208,18 +211,19 @@ void bookOneRead()
     FILE *file;
 
     // Open the file in read mode
-    file = fopen("Books/KirmiziPazartesi/KP-Sayfa-1.txt", "r");
+    file = fopen(".././Books/KirmiziPazartesi/KP-Sayfa-1.txt", "r");
 
     // Check if the file was opened successfully
     if (file == NULL)
     {
-        perror("Bir seyler ters gitti.");
+        perror("Bir seyler ters gitti");
         exit(EXIT_FAILURE);
     }
 
     // Read and print the contents of the file
-    char buffer[500]; // Create a buffer to store each line
+    char buffer[80]; // Create a buffer to store each line
 
+    system("cls");
     printf("Sayfa 1\n\n");
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
@@ -229,6 +233,196 @@ void bookOneRead()
 
     // Close the file
     fclose(file);
+
+    printf("\n\n1) Sonraki sayfa\n");
+    printf("2) Geri don\n");
+
+    int choice;
+    choice = getchar();
+    flushInputBuffer();
+    choice = choice - '0';
+
+    switch (choice)
+    {
+    case 1:
+        system("cls");
+        bookOneReadTwo();
+        break;
+    case 2:
+        system("cls");
+        mainPage();
+        break;
+    default:
+        printf("\nGecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        bookOneRead();
+    }
+}
+
+void bookOneReadTwo()
+{
+    // Declare a file pointer
+    FILE *file2;
+
+    // Open the file in read mode
+    file2 = fopen(".././Books/KirmiziPazartesi/KP-Sayfa-2.txt", "r");
+
+    // Check if the file was opened successfully
+    if (file2 == NULL)
+    {
+        perror("Bir seyler ters gitti");
+        exit(EXIT_FAILURE);
+    }
+
+    // Read and print the contents of the file
+    char buffer[80]; // Create a buffer to store each line
+
+    system("cls");
+    printf("Sayfa 2\n\n");
+
+    while (fgets(buffer, sizeof(buffer), file2) != NULL)
+    {
+        printf("%s", buffer);
+    }
+
+    // Close the file
+    fclose(file2);
+
+    printf("\n\n1) Sonraki sayfa\n");
+    printf("2) Geri don\n");
+
+    int choice;
+    choice = getchar();
+    flushInputBuffer();
+    choice = choice - '0';
+
+    switch (choice)
+    {
+    case 1:
+        system("cls");
+        bookOneReadThree();
+        break;
+    case 2:
+        system("cls");
+        bookOneRead();
+        break;
+    default:
+        printf("\nGecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        bookOneReadTwo();
+    }
+}
+
+void bookOneReadThree()
+{
+    // Declare a file pointer
+    FILE *file3;
+
+    // Open the file in read mode
+    file3 = fopen(".././Books/KirmiziPazartesi/KP-Sayfa-3.txt", "r");
+
+    // Check if the file was opened successfully
+    if (file3 == NULL)
+    {
+        perror("Bir seyler ters gitti");
+        exit(EXIT_FAILURE);
+    }
+
+    // Read and print the contents of the file
+    char buffer[80]; // Create a buffer to store each line
+
+    system("cls");
+    printf("Sayfa 3\n\n");
+
+    while (fgets(buffer, sizeof(buffer), file3) != NULL)
+    {
+        printf("%s", buffer);
+    }
+
+    // Close the file
+    fclose(file3);
+
+    printf("\n\n1) Sonraki sayfa\n");
+    printf("2) Geri don\n");
+
+    int choice;
+    choice = getchar();
+    flushInputBuffer();
+    choice = choice - '0';
+
+    switch (choice)
+    {
+    case 1:
+        system("cls");
+        bookOneReadFour();
+        break;
+    case 2:
+        system("cls");
+        bookOneReadTwo();
+        break;
+    default:
+        printf("\nGecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        bookOneReadThree();
+    }
+}
+
+void bookOneReadFour()
+{
+    // Declare a file pointer
+    FILE *file4;
+
+    // Open the file in read mode
+    file4 = fopen(".././Books/KirmiziPazartesi/KP-Sayfa-4.txt", "r");
+
+    // Check if the file was opened successfully
+    if (file4 == NULL)
+    {
+        perror("Bir seyler ters gitti");
+        exit(EXIT_FAILURE);
+    }
+
+    // Read and print the contents of the file
+    char buffer[80]; // Create a buffer to store each line
+
+    system("cls");
+    printf("Sayfa 4\n\n");
+
+    while (fgets(buffer, sizeof(buffer), file4) != NULL)
+    {
+        printf("%s", buffer);
+    }
+
+    // Close the file
+    fclose(file4);
+
+    printf("\n\n1) Ana menuye don\n");
+    printf("2) Geri don\n");
+
+    int choice;
+    choice = getchar();
+    flushInputBuffer();
+    choice = choice - '0';
+
+    switch (choice)
+    {
+    case 1:
+        system("cls");
+        mainPage();
+        break;
+    case 2:
+        system("cls");
+        bookOneReadThree();
+        break;
+    default:
+        printf("\nGecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        bookOneReadFour();
+    }
 }
 
 void initUser(struct User *user, const char *username, const char *password, enum UserType type)
