@@ -106,19 +106,19 @@ void initializeBooks(struct Book *books)
 
 void displayBooks(struct Book *books)
 {
-    printf("Kitap ID\tKitap Adi\tYazar Adi\t\tYayin Evi\t\tOdunc Alinmis\n");
+    printf(GREEN_TEXT "Kitap ID\tKitap Adi\tYazar Adi\t\tYayin Evi\t\tOdunc Alinmis\n" RESET_COLOR);
     for (int i = 0; i < 6; i++)
     {
-        printf("%d\t\t%s\t\t%s\t\t%s\t\t%s\n",
+        printf(BLUE_TEXT "%d\t\t%s\t\t%s\t\t%s\t\t%s\n",
                books[i].bookID,
                books[i].bookName,
                books[i].authorName,
                books[i].publisherName,
-               books[i].borrowed ? "Evet" : "Hayir");
+               books[i].borrowed ? "Evet" : "Hayir" RESET_COLOR);
     }
-    printf("\n\n1) Kitap odunc al\n");
+    printf(GREEN_TEXT "\n\n1) Kitap odunc al\n");
     printf("2) Bilgisayara yukle\n");
-    printf("3) Geri don\n");
+    printf("3) Geri don\n" RESET_COLOR);
     handleBooks();
 }
 
@@ -132,7 +132,7 @@ void handleBooks()
     switch (choice)
     {
     case 1:
-        printf("\nHangi kitabi odunc alacaksiniz?\n");
+        printf("\nHangi kitabi odunc alacaksiniz? (Kitap ID)\n");
         int bookToBorrow;
         bookToBorrow = getchar();
         flushInputBuffer();
@@ -228,7 +228,7 @@ void printMainMenu()
     printf(YELLOW_TEXT "2) Kayit" RESET_COLOR "\n");
     printf(MAGENTA_TEXT "3) Hakkinda" RESET_COLOR "\n");
     printf(CYAN_TEXT "4) Cikis" RESET_COLOR "\n");
-    printf("\nSeciminiz: ");
+    printf(GREEN_TEXT "\nSeciminiz: " RESET_COLOR);
     handleMainMenuChoice();
 }
 
@@ -318,7 +318,7 @@ void printLoginMenu()
     printf(YELLOW_TEXT "----1.2) Personel" RESET_COLOR "\n");
     printf(MAGENTA_TEXT "----1.3) Yonetici" RESET_COLOR "\n");
     printf(CYAN_TEXT "----1.4) Geri don" RESET_COLOR "\n");
-    printf("\nSeciminiz: ");
+    printf(GREEN_TEXT "\nSeciminiz: " RESET_COLOR);
     handleLoginMenuChoice();
 }
 
@@ -488,12 +488,13 @@ void mainPage()
 {
     system("cls");
     printf(GREEN_TEXT "\t\t--Ana Sayfa--\t\t" RESET_COLOR "\n");
-    printf("\nHosgeldiniz, %s!\n\n", currentUser);
+    printf("\nHosgeldiniz, ");
+    printf(GREEN_TEXT "%s!\n\n" RESET_COLOR, currentUser);
     printf(BLUE_TEXT "1) Kitaplar" RESET_COLOR "\n");
     printf(YELLOW_TEXT "2) Kitap iade et" RESET_COLOR "\n");
     printf(MAGENTA_TEXT "3) Kitap bagisla" RESET_COLOR "\n");
     printf(CYAN_TEXT "4) Geri don" RESET_COLOR "\n");
-    printf("\nSeciminiz: ");
+    printf(GREEN_TEXT "\nSeciminiz: " RESET_COLOR);
     handleMainPage();
 }
 
@@ -508,7 +509,7 @@ void handleMainPage()
     {
     case 1:
         system("cls");
-        printf("Kitaplar\n\n");
+        printf("Kitaplar\t\t\t\t\t\t\t\t(Kullanici: %s)\n\n", currentUser);
         displayBooks(books);
         break;
     case 2:
