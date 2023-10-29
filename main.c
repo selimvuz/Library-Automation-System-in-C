@@ -279,7 +279,7 @@ void bookOneRead()
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -334,7 +334,7 @@ void bookOneReadTwo()
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -389,7 +389,7 @@ void bookOneReadThree()
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -444,7 +444,7 @@ void bookOneReadFour()
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -499,7 +499,7 @@ void bookTwoRead()
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -554,7 +554,7 @@ void bookTwoReadTwo()
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -609,7 +609,7 @@ void bookTwoReadThree()
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -664,7 +664,7 @@ void bookTwoReadFour()
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -719,7 +719,7 @@ void bookThreeRead()
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -774,7 +774,7 @@ void bookThreeReadTwo()
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -829,7 +829,7 @@ void bookThreeReadThree()
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -884,7 +884,7 @@ void bookThreeReadFour()
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -939,7 +939,7 @@ void bookFourRead()
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -994,7 +994,7 @@ void bookFourReadTwo()
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1049,7 +1049,7 @@ void bookFourReadThree()
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1104,7 +1104,7 @@ void bookFourReadFour()
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1159,7 +1159,7 @@ void bookFiveRead()
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1214,7 +1214,7 @@ void bookFiveReadTwo()
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1269,7 +1269,7 @@ void bookFiveReadThree()
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1324,7 +1324,7 @@ void bookFiveReadFour()
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1379,7 +1379,7 @@ void bookSixRead()
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1434,7 +1434,7 @@ void bookSixReadTwo()
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1489,7 +1489,7 @@ void bookSixReadThree()
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
@@ -1544,7 +1544,7 @@ void bookSixReadFour()
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
-        printf("%s", buffer);
+        printf(CYAN_TEXT "%s" RESET_COLOR, buffer);
     }
 
     // Close the file
