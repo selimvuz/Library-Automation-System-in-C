@@ -150,6 +150,7 @@ void displayBooks(struct Book *books)
 void handleBooks()
 {
     int choice;
+    printf(GREEN_TEXT "\nSeciminiz: " RESET_COLOR);
     choice = getchar();
     flushInputBuffer();
     choice = choice - '0';
@@ -274,7 +275,7 @@ void bookOneRead()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 1\n\n");
+    printf("Sayfa 1 - Kirmizi Pazartesi\n\n");
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
@@ -329,7 +330,7 @@ void bookOneReadTwo()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 2\n\n");
+    printf("Sayfa 2 - Kirmizi Pazartesi\n\n");
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
@@ -384,7 +385,7 @@ void bookOneReadThree()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 3\n\n");
+    printf("Sayfa 3 - Kirmizi Pazartesi\n\n");
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
@@ -439,7 +440,7 @@ void bookOneReadFour()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 4\n\n");
+    printf("Sayfa 4 - Kirmizi Pazartesi\n\n");
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
@@ -494,7 +495,7 @@ void bookTwoRead()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 1\n\n");
+    printf("Sayfa 1 - Hayvan Ciftligi\n\n");
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
@@ -549,7 +550,7 @@ void bookTwoReadTwo()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 2\n\n");
+    printf("Sayfa 2 - Hayvan Ciftligi\n\n");
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
@@ -604,7 +605,7 @@ void bookTwoReadThree()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 3\n\n");
+    printf("Sayfa 3 - Hayvan Ciftligi\n\n");
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
@@ -659,7 +660,7 @@ void bookTwoReadFour()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 4\n\n");
+    printf("Sayfa 4 - Hayvan Ciftligi\n\n");
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
@@ -714,7 +715,7 @@ void bookThreeRead()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 1\n\n");
+    printf("Sayfa 1 - Kucuk Prens\n\n");
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
@@ -769,7 +770,7 @@ void bookThreeReadTwo()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 2\n\n");
+    printf("Sayfa 2 - Kucuk Prens\n\n");
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
@@ -824,7 +825,7 @@ void bookThreeReadThree()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 3\n\n");
+    printf("Sayfa 3 - Kucuk Prens\n\n");
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
@@ -879,7 +880,7 @@ void bookThreeReadFour()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 4\n\n");
+    printf("Sayfa 4 - Kucuk Prens\n\n");
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
@@ -934,7 +935,7 @@ void bookFourRead()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 1\n\n");
+    printf("Sayfa 1 - 1984\n\n");
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
@@ -989,7 +990,7 @@ void bookFourReadTwo()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 2\n\n");
+    printf("Sayfa 2 - 1984\n\n");
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
@@ -1044,7 +1045,7 @@ void bookFourReadThree()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 3\n\n");
+    printf("Sayfa 3 - 1984\n\n");
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
@@ -1099,7 +1100,7 @@ void bookFourReadFour()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 4\n\n");
+    printf("Sayfa 4 - 1984\n\n");
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
@@ -1154,7 +1155,7 @@ void bookFiveRead()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 1\n\n");
+    printf("Sayfa 1 - Simyaci\n\n");
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
@@ -1209,7 +1210,7 @@ void bookFiveReadTwo()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 2\n\n");
+    printf("Sayfa 2 - Simyaci\n\n");
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
@@ -1264,7 +1265,7 @@ void bookFiveReadThree()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 3\n\n");
+    printf("Sayfa 3 - Simyaci\n\n");
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
@@ -1319,7 +1320,7 @@ void bookFiveReadFour()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 4\n\n");
+    printf("Sayfa 4 - Simyaci\n\n");
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
@@ -1374,7 +1375,7 @@ void bookSixRead()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 1\n\n");
+    printf("Sayfa 1 - Seker Portakali\n\n");
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
@@ -1429,7 +1430,7 @@ void bookSixReadTwo()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 2\n\n");
+    printf("Sayfa 2 - Seker Portakali\n\n");
 
     while (fgets(buffer, sizeof(buffer), file2) != NULL)
     {
@@ -1484,7 +1485,7 @@ void bookSixReadThree()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 3\n\n");
+    printf("Sayfa 3 - Seker Portakali\n\n");
 
     while (fgets(buffer, sizeof(buffer), file3) != NULL)
     {
@@ -1539,7 +1540,7 @@ void bookSixReadFour()
     char buffer[80]; // Create a buffer to store each line
 
     system("cls");
-    printf("Sayfa 4\n\n");
+    printf("Sayfa 4 - Seker Portakali\n\n");
 
     while (fgets(buffer, sizeof(buffer), file4) != NULL)
     {
