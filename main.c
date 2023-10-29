@@ -52,6 +52,7 @@ void bookSixRead();
 void bookSixReadTwo();
 void bookSixReadThree();
 void bookSixReadFour();
+void borrowedBooks();
 
 enum UserType
 {
@@ -253,6 +254,86 @@ void handleBooks()
         Sleep(2000);
         system("cls");
         displayBooks(books);
+    }
+}
+
+void borrowedBooks()
+{
+    int count = 0;
+    printf(GREEN_TEXT "\nOdunc aldiginiz kitaplar:\n" RESET_COLOR);
+
+    for (int i = 0; i < 6; i++)
+    {
+        if (strcmp(books[i].borrowedBy, currentUser) == 0)
+        {
+            printf(BLUE_TEXT "ID: %d, Kitap: %s\n" RESET_COLOR, i + 1, books[i].bookName);
+            count++;
+        }
+    }
+
+    if (count == 0)
+    {
+        system("cls");
+        printf("Odunc aldiginiz kitap bulunmamaktadir.\n");
+        Sleep(2000);
+        returnText();
+        mainPage();
+    }
+
+    printf("\n1) Kitap sec\n");
+    printf("2) Geri don\n");
+
+    int choice;
+    choice = getchar();
+    flushInputBuffer();
+    choice = choice - '0';
+
+    switch (choice)
+    {
+    case 1:
+        printf("Kitap ID: ");
+        int bookToReturn;
+        bookToReturn = getchar();
+        flushInputBuffer();
+        bookToReturn = bookToReturn - '0';
+
+        if (bookToReturn < 1 || bookToReturn > 6)
+        {
+            printf("\nGecersiz kitap ID'si!\n");
+            Sleep(2000);
+            returnText();
+            system("cls");
+            borrowedBooks();
+        }
+
+        if (strcmp(books[bookToReturn - 1].borrowedBy, currentUser) != 0)
+        {
+            printf("\nBu kitap sizin tarafinizdan odunc alinmamis!\n");
+            Sleep(2000);
+            returnText();
+            system("cls");
+            borrowedBooks();
+        }
+
+        books[bookToReturn - 1].borrowed = false;
+        strcpy(books[bookToReturn - 1].borrowedBy, "");
+
+        printf("\nKitap (%s), %s tarafindan geri verildi!\n", books[bookToReturn - 1].bookName, currentUser);
+        Sleep(2000);
+        returnText();
+        system("cls");
+        mainPage();
+        break;
+    case 2:
+        system("cls");
+        returnText();
+        mainPage();
+        break;
+    default:
+        printf("\nGecersiz secim. Tekrar deneyin.\n");
+        Sleep(2000);
+        system("cls");
+        borrowedBooks();
     }
 }
 
@@ -1929,7 +2010,8 @@ void handleMainPage()
         break;
     case 2:
         system("cls");
-        printf("Kitap iade et\n");
+        printf("Kitap iade et\t\t\t\t\t\t\t\t(Kullanici: %s)\n", currentUser);
+        borrowedBooks();
         break;
     case 3:
         system("cls");
