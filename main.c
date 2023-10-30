@@ -166,7 +166,7 @@ void handleBooks()
         flushInputBuffer();
         bookToBorrow = bookToBorrow - '0';
 
-        if (bookToBorrow < 1 || bookToBorrow > 6)
+        if (bookToBorrow < 1 || bookToBorrow > numBooks)
         {
             printf("\nGecersiz kitap ID'si!\n");
             Sleep(2000);
@@ -200,7 +200,7 @@ void handleBooks()
         flushInputBuffer();
         bookToRead = bookToRead - '0';
 
-        if (bookToRead < 1 || bookToRead > 6)
+        if (bookToRead < 1 || bookToRead > numBooks)
         {
             printf("\nGecersiz kitap ID'si!\n");
             Sleep(2000);
@@ -244,6 +244,14 @@ void handleBooks()
             openBookText();
             bookThreeRead();
         }
+        else
+        {
+            printf("\nSectiginiz kitap su an okunamiyor!\n");
+            Sleep(3000);
+            returnText();
+            system("cls");
+            displayBooks(books);
+        }
         break;
     case 3:
         system("cls");
@@ -263,7 +271,7 @@ void borrowedBooks()
     int count = 0;
     printf(GREEN_TEXT "\nOdunc aldiginiz kitaplar:\n" RESET_COLOR);
 
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < numBooks; i++)
     {
         if (strcmp(books[i].borrowedBy, currentUser) == 0)
         {
@@ -2055,7 +2063,7 @@ void handleMainPage()
         break;
     case 3:
         system("cls");
-        printf("Kitap bagisla\n");
+        printf("Kitap bagisla\t\t\t\t\t\t\t\t(Kullanici: %s)\n", currentUser);
         donateBook();
         break;
     case 4:
