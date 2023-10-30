@@ -14,4 +14,4 @@
 
 - Herhangi bir harici header kullanılmamıştır.
 
-- İşletim sistemine özel kodlar yüzünden sadece Windows üzerinde düzgün bir şekilde çalışmaktadır.
+- İşletim sistemine özel komutlar yüzünden sadece Windows üzerinde düzgün bir şekilde çalışmaktadır.
