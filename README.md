@@ -2,7 +2,7 @@
 
 ## Kütüphane Otomasyon Sistemi
 
-- İleri Programlama Teknikleri ders projesi olarak hazırlanmış, C dilinde hardcoded bir şekilde yazılmış, uygun dizayn kalıplarının hiçbirine uymayan, yaklaşık 2100 satır kodluk bir programdır.
+- İleri Programlama Teknikleri ders projesi olarak hazırlanmış, C dilinde hardcoded bir şekilde yazılmış, konsolda çalışan, uygun dizayn kalıplarının hiçbirine uymayan, yaklaşık 2100 satır kodluk bir programdır.
 
 ## Neler yapabilirim?
 
