@@ -2074,7 +2074,7 @@ void handleMainPage()
         printf("Gecersiz secim. Tekrar deneyin.\n");
         Sleep(2000);
         system("cls");
-        printMainMenu();
+        mainPage();
     }
 }
 
