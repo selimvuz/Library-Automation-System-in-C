@@ -1759,7 +1759,7 @@ void printMainMenu()
 void returnText()
 {
     system("cls");
-    printf("Geri donuluyor.\n");
+    printf(YELLOW_TEXT "Geri donuluyor.\n");
     Sleep(200);
     system("cls");
     printf("Geri donuluyor..\n");
@@ -1771,7 +1771,7 @@ void returnText()
     printf("Geri donuluyor....\n");
     Sleep(200);
     system("cls");
-    printf("Geri donuluyor.....\n");
+    printf("Geri donuluyor.....\n" RESET_COLOR);
     Sleep(200);
     system("cls");
 }
@@ -1779,7 +1779,7 @@ void returnText()
 void openBookText()
 {
     system("cls");
-    printf("Kitap aciliyor.\n");
+    printf(YELLOW_TEXT "Kitap aciliyor.\n");
     Sleep(200);
     system("cls");
     printf("Kitap aciliyor..\n");
@@ -1791,7 +1791,7 @@ void openBookText()
     printf("Kitap aciliyor....\n");
     Sleep(200);
     system("cls");
-    printf("Kitap aciliyor.....\n");
+    printf("Kitap aciliyor.....\n" RESET_COLOR);
     Sleep(200);
     system("cls");
 }
@@ -1799,7 +1799,7 @@ void openBookText()
 void loginText()
 {
     system("cls");
-    printf("Giris yapiliyor.\n");
+    printf(YELLOW_TEXT "Giris yapiliyor.\n");
     Sleep(200);
     system("cls");
     printf("Giris yapiliyor..\n");
@@ -1811,7 +1811,7 @@ void loginText()
     printf("Giris yapiliyor....\n");
     Sleep(200);
     system("cls");
-    printf("Giris yapiliyor.....\n");
+    printf("Giris yapiliyor.....\n" RESET_COLOR);
     Sleep(200);
     system("cls");
 }
