@@ -84,8 +84,9 @@ struct Book
 };
 
 struct User users[100];
-struct Book books[10];
+struct Book books[20];
 int numUsers = 0;
+int numBooks = 6;
 char currentUser[100];
 
 void initializeBooks(struct Book *books)
@@ -133,7 +134,7 @@ void initializeBooks(struct Book *books)
 void displayBooks(struct Book *books)
 {
     printf(GREEN_TEXT "Kitap ID\tKitap Adi\tYazar Adi\t\tYayin Evi\t\tOdunc Alinmis\n" RESET_COLOR);
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < numBooks; i++)
     {
         printf(BLUE_TEXT "%d\t\t%s\t\t%s\t\t%s\t\t%s\n",
                books[i].bookID,
@@ -335,6 +336,45 @@ void borrowedBooks()
         system("cls");
         borrowedBooks();
     }
+}
+
+void donateBook()
+{
+    char bookName[100];
+    char authorName[100];
+    char publisherName[100];
+    char temp[100];
+
+    printf(GREEN_TEXT "\nKitap adi: " RESET_COLOR);
+    fgets(temp, sizeof(temp), stdin);
+    temp[strcspn(temp, "\n")] = '\0'; // remove trailing newline character
+    strncpy(bookName, temp, 7);       // copy only the first 7 characters
+
+    printf(GREEN_TEXT "Yazar adi: " RESET_COLOR);
+    fgets(temp, sizeof(temp), stdin);
+    temp[strcspn(temp, "\n")] = '\0'; // remove trailing newline character
+    strncpy(authorName, temp, 7);     // copy only the first 7 characters
+
+    printf(GREEN_TEXT "Yayin evi: " RESET_COLOR);
+    fgets(temp, sizeof(temp), stdin);
+    temp[strcspn(temp, "\n")] = '\0'; // remove trailing newline character
+    strncpy(publisherName, temp, 7);  // copy only the first 7 characters
+
+    int bookID = books[numBooks - 1].bookID + 1;
+
+    strcpy(books[numBooks].bookName, bookName);
+    strcpy(books[numBooks].authorName, authorName);
+    strcpy(books[numBooks].publisherName, publisherName);
+    books[numBooks].bookID = bookID;
+    books[numBooks].borrowed = false;
+
+    numBooks++;
+
+    printf("\nKitap basariyla eklendi!\n");
+    Sleep(2000);
+    returnText();
+    system("cls");
+    mainPage();
 }
 
 void bookOneRead()
@@ -2016,6 +2056,7 @@ void handleMainPage()
     case 3:
         system("cls");
         printf("Kitap bagisla\n");
+        donateBook();
         break;
     case 4:
         returnText();
