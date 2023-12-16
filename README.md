@@ -17,13 +17,13 @@ Bu proje, İleri Programlama Teknikleri dersi için geliştirilmiş, C dilinde y
 
 ## Kullanımı
 - Uygulamayı Başlatın: Uygulamayı bir konsol ortamında çalıştırın. Ana menüde sistem hakkında bilgi almak, giriş yapmak veya kayıt olmak için seçenekler sunulur.
-Kullanıcı Kaydı: Yeni kullanıcılar, kullanıcı adı, şifre ve kullanıcı rolü ile kayıt olabilir.
+- Kullanıcı Kaydı: Yeni kullanıcılar, kullanıcı adı, şifre ve kullanıcı rolü ile kayıt olabilir.
 - Giriş Yapma: Kullanıcılar, rollerine göre kimlik bilgileri ile giriş yapabilirler.
-Kitaplarla Etkileşim: Giriş yapan kullanıcılar kitaplara göz atabilir, mevcut olanları ödünç alabilir, ödünç aldıkları kitapları okuyabilir ve iade edebilirler. Ayrıca, kullanıcılar kütüphaneye kitap bağışında bulunabilirler.
+- Kitaplarla Etkileşim: Giriş yapan kullanıcılar kitaplara göz atabilir, mevcut olanları ödünç alabilir, ödünç aldıkları kitapları okuyabilir ve iade edebilirler. Ayrıca, kullanıcılar kütüphaneye kitap bağışında bulunabilirler.
 
 ## Sistem Gereksinimleri
-Windows İşletim Sistemi (bazı fonksiyonlar için windows.h kullanır, örneğin Sleep()).
-C Derleyici (GCC, Clang vb.)
+- Windows İşletim Sistemi (bazı fonksiyonlar için windows.h kullanır, örneğin Sleep()).
+- C Derleyici (GCC, Clang vb.)
 
 ## Kurulum ve Derleme
 - Depoyu Klonlayın: Kaynak kodunu depodan klonlayın veya indirin.
@@ -33,4 +33,4 @@ C Derleyici (GCC, Clang vb.)
     - `./kutuphane_sistemi`
 
 ## Katkıda Bulunma
-Bu projeye katkıda bulunmak isteyenler hoş karşılanır. Lütfen deponuzu çatallayın (fork) ve değişikliklerinizle birlikte bir çekme isteği (pull request) gönderin.
+Bu projeye katkıda bulunabilirsiniz. Lütfen repoyu çatallayın (fork) ve değişikliklerinizle birlikte bir pull request gönderin.
