@@ -7,6 +7,7 @@ Bu proje, İleri Programlama Teknikleri dersi için geliştirilmiş, C dilinde y
 ![Kütüphane Otomasyon Sistemi](images/1.png)
 ![Kütüphane Otomasyon Sistemi](images/2.png)
 ![Kütüphane Otomasyon Sistemi](images/3.png)
+![Kütüphane Otomasyon Sistemi](images/4.png)
 
 ## Özellikler
 - Kullanıcı Doğrulama: Farklı kullanıcı tipleri (Öğrenci, Eğitmen, Yönetici) için giriş ve kayıt desteği.
